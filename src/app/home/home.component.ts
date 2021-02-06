@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+//import { ToasterService } from 'angular2-toaster';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  urlName = 'compagnie';
+  constructor(
+    public router: Router,
+    //private route: ActivatedRoute,
+  ) { 
+    //super(router, toasterService);
+  }
 
   ngOnInit(): void {
   }
 
+  reserverPage() {
+    this.router.navigate([this.urlName + '/add']);
+  }
 }
