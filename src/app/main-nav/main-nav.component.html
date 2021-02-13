@@ -5,45 +5,71 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <ul>
-        <li><a mat-list-item routerLink="/">Tableau de bord</a></li>
-        <li><a mat-list-item>Compagnies</a>
-          <ul>
-            <li><a mat-list-item routerLink="/compagnie">List</a></li>
-            <li><a mat-list-item routerLink="/compagnie/add">Ajouter</a></li>
-            <li><a mat-list-item routerLink="/compagnie/edit">Modifier</a></li>
-          </ul>
-        </li>
-        <li><a mat-list-item>Stations</a>
-          <ul>
-            <li><a mat-list-item routerLink="/station">List</a></li>
-            <li><a mat-list-item routerLink="/station/add">Ajouter</a></li>
-            <li><a mat-list-item routerLink="/station/edit">Modifier</a></li>
-          </ul>
-        </li>
-        <li><a mat-list-item>Trajets</a>
-          <ul>
-            <li><a mat-list-item routerLink="/trajet">List</a></li>
-            <li><a mat-list-item routerLink="/trajet/add">Ajouter</a></li>
-            <li><a mat-list-item routerLink="/trajet/edit">Modifier</a></li>
-          </ul>
-        </li>
-        <li><a mat-list-item>Bus</a>
-          <ul>
-            <li><a mat-list-item routerLink="/bus">List</a></li>
-            <li><a mat-list-item routerLink="/bus/add">Ajouter</a></li>
-            <li><a mat-list-item routerLink="/bus/edit">Modifier</a></li>
-          </ul>
-        </li>
-        <li><a mat-list-item>Reservations</a>
-          <ul>
-            <li><a mat-list-item routerLink="/reservation">List</a></li>
-            <li><a mat-list-item routerLink="/reservation/add">Ajouter</a></li>
-            <li><a mat-list-item routerLink="/reservation/edit">Modifier</a></li>
-          </ul>
-        </li>
-        <li><a mat-list-item routerLink="/contact">Contact</a></li>
-      </ul>
+      
+      <div>
+        <a mat-list-item (click)="homePage()">
+          <span class="material-icons">
+            dashboard
+          </span>Tableau de bord
+        </a>
+      </div>
+
+      <div>
+        <a mat-list-item (click)="listPageP()">
+          <span class="material-icons">
+            notifications_active
+          </span>Programmation des bus
+        </a>
+      </div>
+
+      <div>
+        <a mat-list-item (click)="listPageC()">
+          <span class="material-icons">
+            add_business
+          </span>Compagnies
+        </a>
+      </div>
+      
+      <div>
+        <a mat-list-item (click)="listPageS()">
+          <span class="material-icons">
+            my_location
+          </span>Stations
+          </a>
+      </div>
+
+      <div>
+        <a mat-list-item (click)="listPageT()">
+          <span class="material-icons">
+            swap_vert
+          </span>Trajets
+         </a>
+      </div>
+
+      <div>
+        <a mat-list-item (click)="listPageB()">
+          <span class="material-icons">
+            departure_board
+          </span>Bus
+         </a>
+      </div>
+
+      <div>
+        <a mat-list-item (click)="listPageR()">
+          <span class="material-icons">
+            add_shopping_cart
+          </span>Reservations
+        </a>
+      </div>
+
+      <div>
+        <a mat-list-item (click)="contactPage()">
+          <span class="material-icons">
+            contact_page
+          </span>Contact
+        </a>
+      </div>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

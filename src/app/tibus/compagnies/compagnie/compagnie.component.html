@@ -1,0 +1,81 @@
+<mat-toolbar>
+    <span>
+        {{service.form.controls['$key'].value?"Modifier compagnie":"Nouvelle compagnie" }}
+    </span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabindex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+
+<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+            <div class="controles-container">
+                
+                <input type="hidden" formControlName="$key">
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="nom" placeholder="Nom*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="directeur" placeholder="Directeur*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="adresse" placeholder="Adresse*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="email" matInput formControlName="email" placeholder="E-mail">
+                    <mat-error>Adresse email invalide</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="numero" placeholder="Numero*">
+                    <mat-error *ngIf="service.form.controls['numero'].errors?.required">Ce champ est obligatoire
+                    </mat-error>
+                    <mat-error *ngIf="service.form.controls['numero'].errors?.minlength">Minimum 8 caratères requis
+                    </mat-error>
+
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="controles-container">
+                
+                <mat-form-field appearance="legacy">
+                    <textarea  matInput formControlName="localisation" placeholder="Localisation"></textarea>
+                    <!--input type="text" matInput formControlName="localisation" placeholder="Localisation"-->
+                </mat-form-field>
+                <!--div class="add-bottom-padding">
+                    
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button value="1">Option 1</mat-radio-button>
+                        <mat-radio-button value="2">Option 2</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <mat-form-field appearance="legacy">
+                    <mat-select placeholder="test">
+                        <mat-option>None</mat-option>
+                        <mat-option value="option1">Option 1</mat-option>
+                        <mat-option value="option2">Option 2</mat-option>
+                        <mat-option value="option3">Option 3</mat-option>
+                    </mat-select>
+                </mat-form-field-->
+                <mat-form-field appearance="legacy">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput formControlName="abnDate" [matDatepicker]="picker" placeholder="Date d'abonnement">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <div class="add-bottom-padding">
+                    <mat-checkbox formControlName="isActivate"> Activée</mat-checkbox>
+                </div>
+                <div class="button-row">
+                    <button mat-raised-button color="primary" type="submit"
+                        [disabled]="service.form.invalid">Enregistrer</button>
+                    <button mat-raised-button color="warn" (click)="onClear()">Annuler</button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</form>

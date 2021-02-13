@@ -2,4 +2,25 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css'
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* notification */
+snack-bar-container.success {
+    background-color: #5cb85c;
+    color : #fff;
+}
+
+snack-bar-container.failure {
+    background-color: #e48913;
+    color : #fff;
+}
+
+snack-bar-container.warn {
+    background-color: #df1a1a;
+    color : #fff;
+}
+
+snack-bar-container.notification simple-snack-bar{
+    font-size: 18px !important;
+    font-weight: bold;
+}
