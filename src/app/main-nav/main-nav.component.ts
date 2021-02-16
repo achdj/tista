@@ -14,6 +14,7 @@ export class MainNavComponent implements OnInit{
   urlNameH = '/';
   urlNameP = 'programmations';
   urlName = 'compagnies';
+  urlNameL= 'localites';
   urlNameS = 'stations';
   urlNameT = 'trajets';
   urlNameB = 'bus';
@@ -45,6 +46,11 @@ export class MainNavComponent implements OnInit{
   //route pour les compagnies
   listPageC() {
     this.router.navigate([this.urlName]);
+  }
+
+  //route pour les localités
+  listPageL() {
+    this.router.navigate([this.urlNameL]);
   }
 
   //route pour les stations

@@ -4,22 +4,25 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { CompagnieComponent } from '../compagnie/compagnie.component';
+import { LocaliteComponent } from '../localite/localite.component';
 import { NotificationService } from 'src/app/general/services/notification.service';
 import { DialogService } from 'src/app/general/services/dialog.service';
 import { CommonModule } from '@angular/common';
 import { PaysService } from 'src/app/general/services/pays.service';
-
+import { LocaliteService } from 'src/app/general/services/localite.service';
+import * as _ from 'lodash-es';
+import { ListItem } from 'ng-multiselect-dropdown/multiselect.model';
 
 @Component({
-  selector: 'app-compagnie-list',
-  templateUrl: './compagnie-list.component.html',
-  styleUrls: ['./compagnie-list.component.scss']
+  selector: 'app-localite-list',
+  templateUrl: './localite-list.component.html',
+  styleUrls: ['./localite-list.component.scss']
 })
-export class CompagnieListComponent implements OnInit {
+export class LocaliteListComponent implements OnInit {
 
   constructor(
-    private service: CompagnieService,
+    private service: LocaliteService,
+    private compagnieService: CompagnieService,
     private paysService: PaysService,
     private dialog: MatDialog,
     private notificationService: NotificationService,
@@ -27,19 +30,22 @@ export class CompagnieListComponent implements OnInit {
     ) { }
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['nom', 'directeur', 'adresse', 'email', 'numero', 'localisation', 'paysNom', 'abnDate', 'isActivate','actions'];
+  displayedColumns: string[] = ['nom', 'compagnieNom', 'paysCompagnie', 'isActivate','actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
 
   ngOnInit(): void {
-    this.service.getCompagnies().subscribe(
+    this.service.getLocalites().subscribe(
       list => {
         let array = list.map(item => {
-          let paysNom = this.paysService.getPaysNom(item.payload.val()['pays']);
+          //var compagnieNom = this.compagnieService.getCompagnieNom();
+          let compagnieNom = this.compagnieService.getCompagnieNom(item.payload.val()['compagnies']);
+          //let compagniePays = this.paysService.getPaysNom(item.payload.val()['pays']);
           return {
             $key: item.key,
-            paysNom,
+            compagnieNom,
+            //compagniePays,
             ...item.payload.val()
           };
         });
@@ -70,7 +76,7 @@ export class CompagnieListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    this.dialog.open(CompagnieComponent, dialogConfig);
+    this.dialog.open(LocaliteComponent, dialogConfig);
   }
 
   onEdit(row){
@@ -79,7 +85,7 @@ export class CompagnieListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true; 
     dialogConfig.width = "60%";
-    this.dialog.open(CompagnieComponent, dialogConfig);
+    this.dialog.open(LocaliteComponent, dialogConfig);
   }
 
   onDelete($key){
@@ -91,7 +97,7 @@ export class CompagnieListComponent implements OnInit {
     this.dialogService.openConfirmDialog('Êtes-vous sûr de supprimer cet enregistrement?')
     .afterClosed().subscribe(res =>{
       if(res){
-        this.service.deleteCompagnie($key);
+        this.service.deleteLocalite($key);
         this.notificationService.warn('! Supprimer avec succes');
       }
     });

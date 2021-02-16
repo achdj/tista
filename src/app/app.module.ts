@@ -8,12 +8,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-/*import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';*/
-//import { MatTableDataSource } from '@angular/material/table';
-//import { MatSort } from '@angular/material/sort';
-//import { MatPaginator } from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
 import { CompagnieService } from 'src/app/general/services/compagnie.service';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -46,10 +40,17 @@ import { MaterialModule } from './material/material.module';
 import { CompagnieListComponent } from './tibus/compagnies/compagnie-list/compagnie-list.component';
 import { MatConfirmDialogComponent } from './tibus/mat-confirm-dialog/mat-confirm-dialog.component';
 import { CommonModule } from '@angular/common';
+import { PaysService } from './general/services/pays.service';
+import { LocalitesComponent } from './tibus/localites/localites.component';
+import { LocaliteComponent } from './tibus/localites/localite/localite.component';
+import { LocaliteService } from 'src/app/general/services/localite.service';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { LocaliteListComponent } from './tibus/localites/localite-list/localite-list.component';
 
 const approutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'compagnies', component:CompagniesComponent},
+  { path: 'localites', component:LocalitesComponent},
   //{ path: 'login', component: LoginComponent },
 
 ]
@@ -62,7 +63,10 @@ const approutes: Routes = [
     CompagniesComponent,
     CompagnieComponent,
     CompagnieListComponent,
-    MatConfirmDialogComponent
+    MatConfirmDialogComponent,
+    LocalitesComponent,
+    LocaliteComponent,
+    LocaliteListComponent
   ],
   imports: [
     BrowserModule,
@@ -94,13 +98,12 @@ const approutes: Routes = [
     MatNativeDateModule,
     MatSnackBarModule,
     CommonModule,
-    //MatSort,
-    //MatPaginator,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
 
   ],
-  providers: [CompagnieService, DatePipe],
+  providers: [CompagnieService, PaysService, LocaliteService, DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[CompagnieComponent, MatConfirmDialogComponent]
+  entryComponents:[CompagnieComponent, LocaliteComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }

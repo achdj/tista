@@ -2,18 +2,31 @@ import { Injectable } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-//import { DatePipe } from '@angular/common';
 
 import { keys } from 'lodash-es';
-import * as _ from 'lodash-es';
+import * as _ from 'lodash';
+//import _ from "lodash";
 import { DatePipe } from '@angular/common';
+import { __assign } from 'tslib';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompagnieService {
 
-  constructor(private firebase: AngularFireDatabase , private datePipe: DatePipe) { }
+  constructor(private firebase: AngularFireDatabase , private datePipe: DatePipe) {
+    this.compagnieList = this.firebase.list("compagnies");
+    this.compagnieList.snapshotChanges().subscribe(
+      list => {
+        this.array = list.map(item => {
+          return {
+            $key: item.key,
+            ...item.payload.val()
+          };
+        });
+      }
+    );
+  }
 
   compagnieList: AngularFireList<any>;
   array = [];
@@ -26,6 +39,7 @@ export class CompagnieService {
     email: new FormControl('', Validators.email),
     numero: new FormControl('', [Validators.required, Validators.minLength(8)]),
     localisation: new FormControl(),
+    pays: new FormControl(0),
     abnDate: new FormControl(''),
     isActivate: new FormControl(false)
   });
@@ -39,6 +53,7 @@ export class CompagnieService {
       email: '',
       numero: '',
       localisation: '',
+      pays: 0,
       abnDate: '',
       isActivate: false
     });
@@ -59,6 +74,7 @@ export class CompagnieService {
       email: compagnie.email,
       numero: compagnie.numero,
       localisation: compagnie.localisation,
+      pays: compagnie.pays,
       abnDate: compagnie.abnDate == "" ? "" : this.datePipe.transform(compagnie.abnDate, 'yyyy-MM-dd'),
       isActivate: compagnie.isActivate
     });
@@ -73,6 +89,7 @@ export class CompagnieService {
         email: compagnie.email,
         numero: compagnie.numero,
         localisation: compagnie.localisation,
+        pays: compagnie.pays,
         abnDate: compagnie.abnDate == "" ? "" : this.datePipe.transform(compagnie.abnDate, 'yyyy-MM-dd'),
         isActivate: compagnie.isActivate
       });
@@ -84,14 +101,22 @@ export class CompagnieService {
 
   populateForm(compagnie){
     //this.form.setValue(_.omit(compagnie, 'busNom')); si on recupère avec une info d'autre service
-    this.form.setValue(_.omit(compagnie, ''));
+    this.form.setValue(_.omit(compagnie, 'paysNom'));
   }
 
   getCompagnieNom($key) {
     if ($key == "0")
       return "";
     else{
-      return _.find(this.array, (obj) => { return obj.$key == $key; })['nom'];
+      return _ .find(this.array, (obj) => { return obj.$key == $key; })['nom'];
+    }
+  }
+
+  getCompagniePaysNom($key) {
+    if ($key == "0")
+      return "";
+    else{
+      return _.find(this.array, (obj) => { return obj.$key == $key; })['pays'];
     }
   }
   
