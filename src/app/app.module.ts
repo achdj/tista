@@ -46,11 +46,21 @@ import { LocaliteComponent } from './tibus/localites/localite/localite.component
 import { LocaliteService } from 'src/app/general/services/localite.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LocaliteListComponent } from './tibus/localites/localite-list/localite-list.component';
+import { StationsComponent } from './tibus/stations/stations.component';
+import { StationComponent } from './tibus/stations/station/station.component';
+import { StationListComponent } from './tibus/stations/station-list/station-list.component';
+import { StationService } from './general/services/station.service';
+import { VehiculesComponent } from './tibus/vehicules/vehicules.component';
+import { VehiculeComponent } from './tibus/vehicules/vehicule/vehicule.component';
+import { VehiculeListComponent } from './tibus/vehicules/vehicule-list/vehicule-list.component';
+import { VehiculeService } from './general/services/vehicule.service';
 
 const approutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'compagnies', component:CompagniesComponent},
   { path: 'localites', component:LocalitesComponent},
+  { path: 'stations', component:StationsComponent},
+  { path: 'vehicules', component:VehiculesComponent},
   //{ path: 'login', component: LoginComponent },
 
 ]
@@ -66,7 +76,13 @@ const approutes: Routes = [
     MatConfirmDialogComponent,
     LocalitesComponent,
     LocaliteComponent,
-    LocaliteListComponent
+    LocaliteListComponent,
+    StationsComponent,
+    StationComponent,
+    StationListComponent,
+    VehiculesComponent,
+    VehiculeComponent,
+    VehiculeListComponent
   ],
   imports: [
     BrowserModule,
@@ -102,8 +118,8 @@ const approutes: Routes = [
     HttpClientModule
 
   ],
-  providers: [CompagnieService, PaysService, LocaliteService, DatePipe],
+  providers: [CompagnieService, PaysService, LocaliteService, StationService, VehiculeService, DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[CompagnieComponent, LocaliteComponent, MatConfirmDialogComponent]
+  entryComponents:[CompagnieComponent, LocaliteComponent, StationComponent, VehiculeComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }

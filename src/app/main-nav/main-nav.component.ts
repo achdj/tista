@@ -17,7 +17,7 @@ export class MainNavComponent implements OnInit{
   urlNameL= 'localites';
   urlNameS = 'stations';
   urlNameT = 'trajets';
-  urlNameB = 'bus';
+  urlNameB = 'vehicules';
   urlNameR = 'reservations';
   urlNameC = 'contacts';
 
