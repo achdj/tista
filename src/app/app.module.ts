@@ -54,6 +54,11 @@ import { VehiculesComponent } from './tibus/vehicules/vehicules.component';
 import { VehiculeComponent } from './tibus/vehicules/vehicule/vehicule.component';
 import { VehiculeListComponent } from './tibus/vehicules/vehicule-list/vehicule-list.component';
 import { VehiculeService } from './general/services/vehicule.service';
+import { TrajetsComponent } from './tibus/trajets/trajets.component';
+import { TrajetComponent } from './tibus/trajets/trajet/trajet.component';
+import { TrajetListComponent } from './tibus/trajets/trajet-list/trajet-list.component';
+import { TrajetService }  from './general/services/trajet.service';
+import { ContactsComponent } from './tibus/contacts/contacts.component';
 
 const approutes: Routes = [
   { path: '', component: HomeComponent },
@@ -61,6 +66,8 @@ const approutes: Routes = [
   { path: 'localites', component:LocalitesComponent},
   { path: 'stations', component:StationsComponent},
   { path: 'vehicules', component:VehiculesComponent},
+  { path: 'trajets', component:TrajetsComponent},
+  { path: 'contacts', component:ContactsComponent },
   //{ path: 'login', component: LoginComponent },
 
 ]
@@ -82,7 +89,11 @@ const approutes: Routes = [
     StationListComponent,
     VehiculesComponent,
     VehiculeComponent,
-    VehiculeListComponent
+    VehiculeListComponent,
+    TrajetsComponent,
+    TrajetComponent,
+    TrajetListComponent,
+    ContactsComponent,
   ],
   imports: [
     BrowserModule,
@@ -118,8 +129,8 @@ const approutes: Routes = [
     HttpClientModule
 
   ],
-  providers: [CompagnieService, PaysService, LocaliteService, StationService, VehiculeService, DatePipe],
+  providers: [CompagnieService, PaysService, LocaliteService, StationService, VehiculeService, TrajetService, DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[CompagnieComponent, LocaliteComponent, StationComponent, VehiculeComponent, MatConfirmDialogComponent]
+  entryComponents:[CompagnieComponent, LocaliteComponent, StationComponent, VehiculeComponent, TrajetComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }
