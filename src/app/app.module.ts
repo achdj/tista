@@ -9,7 +9,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { DatePipe } from '@angular/common';
-import { CompagnieService } from 'src/app/general/services/compagnie.service';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select'; 
@@ -34,40 +33,24 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
 import { from } from 'rxjs';
-import { CompagniesComponent } from './tibus/compagnies/compagnies.component';
-import { CompagnieComponent } from './tibus/compagnies/compagnie/compagnie.component';
 import { MaterialModule } from './material/material.module';
-import { CompagnieListComponent } from './tibus/compagnies/compagnie-list/compagnie-list.component';
-import { MatConfirmDialogComponent } from './tibus/mat-confirm-dialog/mat-confirm-dialog.component';
+import { MatConfirmDialogComponent } from './tista/mat-confirm-dialog/mat-confirm-dialog.component';
 import { CommonModule } from '@angular/common';
 import { PaysService } from './general/services/pays.service';
-import { LocalitesComponent } from './tibus/localites/localites.component';
-import { LocaliteComponent } from './tibus/localites/localite/localite.component';
-import { LocaliteService } from 'src/app/general/services/localite.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { LocaliteListComponent } from './tibus/localites/localite-list/localite-list.component';
-import { StationsComponent } from './tibus/stations/stations.component';
-import { StationComponent } from './tibus/stations/station/station.component';
-import { StationListComponent } from './tibus/stations/station-list/station-list.component';
-import { StationService } from './general/services/station.service';
-import { VehiculesComponent } from './tibus/vehicules/vehicules.component';
-import { VehiculeComponent } from './tibus/vehicules/vehicule/vehicule.component';
-import { VehiculeListComponent } from './tibus/vehicules/vehicule-list/vehicule-list.component';
-import { VehiculeService } from './general/services/vehicule.service';
-import { TrajetsComponent } from './tibus/trajets/trajets.component';
-import { TrajetComponent } from './tibus/trajets/trajet/trajet.component';
-import { TrajetListComponent } from './tibus/trajets/trajet-list/trajet-list.component';
-import { TrajetService }  from './general/services/trajet.service';
-import { ContactsComponent } from './tibus/contacts/contacts.component';
+import { PompesComponent } from './tista/pompes/pompes.component';
+import { PompeComponent } from './tista/pompes/pompe/pompe.component';
+import { PompeListComponent } from './tista/pompes/pompe-list/pompe-list.component';
+import { PompeService } from './general/services/pompe.service';
+import { StocksComponent } from './tista/stocks/stocks.component';
+import { StockComponent } from './tista/stocks/stock/stock.component';
+import { StockListComponent } from './tista/stocks/stock-list/stock-list.component';
+import { StockService } from './general/services/stock.service';
 
 const approutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'compagnies', component:CompagniesComponent},
-  { path: 'localites', component:LocalitesComponent},
-  { path: 'stations', component:StationsComponent},
-  { path: 'vehicules', component:VehiculesComponent},
-  { path: 'trajets', component:TrajetsComponent},
-  { path: 'contacts', component:ContactsComponent },
+  { path: 'pompes', component:PompesComponent},
+  { path: 'stocks', component:StocksComponent},
   //{ path: 'login', component: LoginComponent },
 
 ]
@@ -77,23 +60,13 @@ const approutes: Routes = [
     AppComponent,
     MainNavComponent,
     HomeComponent,
-    CompagniesComponent,
-    CompagnieComponent,
-    CompagnieListComponent,
     MatConfirmDialogComponent,
-    LocalitesComponent,
-    LocaliteComponent,
-    LocaliteListComponent,
-    StationsComponent,
-    StationComponent,
-    StationListComponent,
-    VehiculesComponent,
-    VehiculeComponent,
-    VehiculeListComponent,
-    TrajetsComponent,
-    TrajetComponent,
-    TrajetListComponent,
-    ContactsComponent,
+    PompesComponent,
+    PompeComponent,
+    PompeListComponent,
+    StocksComponent,
+    StockComponent,
+    StockListComponent,
   ],
   imports: [
     BrowserModule,
@@ -129,8 +102,8 @@ const approutes: Routes = [
     HttpClientModule
 
   ],
-  providers: [CompagnieService, PaysService, LocaliteService, StationService, VehiculeService, TrajetService, DatePipe],
+  providers: [PompeService, StockService, PaysService, DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[CompagnieComponent, LocaliteComponent, StationComponent, VehiculeComponent, TrajetComponent, MatConfirmDialogComponent]
+  entryComponents:[PompeComponent, StockComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }

@@ -12,14 +12,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MainNavComponent implements OnInit{
 
   urlNameH = '/';
-  urlNameP = 'programmations';
-  urlName = 'compagnies';
-  urlNameL= 'localites';
-  urlNameS = 'stations';
-  urlNameT = 'trajets';
-  urlNameB = 'vehicules';
-  urlNameR = 'reservations';
-  urlNameC = 'contacts';
+  urlNameU = 'users';
+  urlNameC = 'cartes';
+  urlNameB = 'bons';
+  urlNameP = 'pompes';
+  urlNameS = 'stocks';
+  urlNameCl = 'clients';
+  urlNameV= 'ventes';
+  urlNameD = 'depenses';
+  urlNameCo = 'compensations';
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -38,43 +39,48 @@ export class MainNavComponent implements OnInit{
     this.router.navigate([this.urlNameH]);
   }
 
-  //route pour les programmation de bus
-  listPageP(){
-    this.router.navigate([this.urlNameP]);
+  //route pour les utilisateurs
+  listPageU() {
+    this.router.navigate([this.urlNameU]);
   }
 
-  //route pour les compagnies
-  listPageC() {
-    this.router.navigate([this.urlName]);
+  //route pour les cartes
+  listPageC(){
+    this.router.navigate([this.urlNameC]);
   }
 
-  //route pour les localités
-  listPageL() {
-    this.router.navigate([this.urlNameL]);
-  }
-
-  //route pour les stations
-  listPageS() {
-    this.router.navigate([this.urlNameS]);
-  }
-
-  //route pour les trajets
-  listPageT() {
-    this.router.navigate([this.urlNameT]);
-  }
-
-  //route pour les bus
+  //route pour les bons d'essences
   listPageB() {
     this.router.navigate([this.urlNameB]);
   }
 
-  //route pour les reservations
-  listPageR() {
-    this.router.navigate([this.urlNameR]);
+  //route pour les pompes
+  listPageP() {
+    this.router.navigate([this.urlNameP]);
+  }
+
+  //route pour les stocks
+  listPageS() {
+    this.router.navigate([this.urlNameS]);
+  }
+
+  //route pour les clients
+  listPageCl() {
+    this.router.navigate([this.urlNameCl]);
+  }
+
+  //route pour les ventes
+  listPageV() {
+    this.router.navigate([this.urlNameV]);
+  }
+
+  //route pour les déoenses
+  listPageD() {
+    this.router.navigate([this.urlNameD]);
   }
   
-  //route pour le contact
-  contactPage(){
-    this.router.navigate([this.urlNameC]);
+  //route pour les compensations
+  listPageCo(){
+    this.router.navigate([this.urlNameCo]);
   }
 }

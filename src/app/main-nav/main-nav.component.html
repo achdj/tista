@@ -3,80 +3,97 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>TISTA+</mat-toolbar>
     <mat-nav-list>
       
       <div>
         <a mat-list-item (click)="homePage()">
-          <span class="material-icons">
+          <span class="material-icons" style="margin: 5px">
             dashboard
-          </span>Tableau de bord
+          </span>Statistiques
+          <img style="width:14px; height:14px; position: absolute; right: 10px; margin: 0px" src="../../assets/icons/flech.png" alt="">
         </a>
       </div>
 
       <div>
-        <a mat-list-item (click)="listPageP()">
-          <span class="material-icons">
-            notifications_active
-          </span>Programmation des bus
+        <a mat-list-item (click)="listPageU()">
+          <span class="material-icons" style="margin: 5px">
+            perm_identity
+          </span>Utilisateurs
+          <img style="width:14px; height:14px; position: absolute; right: 10px; margin: 0px" src="../../assets/icons/flech.png" alt="">
         </a>
       </div>
 
       <div>
         <a mat-list-item (click)="listPageC()">
-          <span class="material-icons">
-            add_business
-          </span>Compagnies
+          <span class="material-icons" style="margin: 5px">
+            credit_card
+          </span>Cartes
+          <img style="width:14px; height:14px; position: absolute; right: 10px; margin: 0px" src="../../assets/icons/flech.png" alt="">
         </a>
-      </div>
-
-      <div>
-        <a mat-list-item (click)="listPageL()">
-          <span class="material-icons">
-            fmd_good
-            </span>Localité
-        </a>
-      </div>
-      
-      <div>
-        <a mat-list-item (click)="listPageS()">
-          <span class="material-icons">
-            my_location
-          </span>Stations
-          </a>
-      </div>
-
-      <div>
-        <a mat-list-item (click)="listPageT()">
-          <span class="material-icons">
-            swap_vert
-          </span>Trajets
-         </a>
       </div>
 
       <div>
         <a mat-list-item (click)="listPageB()">
-          <span class="material-icons">
-            departure_board
-          </span>Bus
+          <span class="material-icons" style="margin: 5px">
+            local_gas_station
+          </span>Bons d'essence
+          <img style="width:14px; height:14px; position: absolute; right: 10px; margin: 0px" src="../../assets/icons/flech.png" alt="">
+        </a>
+      </div>
+
+      <div>
+        <a mat-list-item (click)="listPageP()">
+          <img style="width:20px; height:20px; margin: 7px" src="../../assets/icons/pompe.png" alt="">
+          Pompes
+          <img style="width:14px; height:14px; position: absolute; right: 10px; margin: 0px" src="../../assets/icons/flech.png" alt="">
+        </a>
+      </div>
+
+      <div>
+        <a mat-list-item (click)="listPageS()">
+          <img style="width:20px; height:20px; margin: 6px" src="../../assets/icons/stock.png" alt="">
+          <span class="material-icons" style="margin: 5px">
+            add_business
+          </span>Stocks
+          <img style="width:14px; height:14px; position: absolute; right: 10px; margin: 0px" src="../../assets/icons/flech.png" alt="">
+        </a>
+      </div>
+
+      <div>
+        <a mat-list-item (click)="listPageCl()">
+          <span class="material-icons" style="margin: 5px">
+            groups
+          </span>Clients
+          <img style="width:14px; height:14px; position: absolute; right: 10px; margin: 0px" src="../../assets/icons/flech.png" alt="">
+        </a>
+      </div>
+      
+      <div>
+        <a mat-list-item (click)="listPageV()">
+          <img style="width:20px; height:20px; margin: 6px" src="../../assets/icons/vente.png" alt="">
+          Ventes
+          <img style="width:14px; height:14px; position: absolute; right: 10px; margin: 0px" src="../../assets/icons/flech.png" alt="">
+          </a>
+      </div>
+
+      <div>
+        <a mat-list-item (click)="listPageD()">
+          <span class="material-icons" style="margin: 5px">
+            swap_vert
+          </span>Dépenses
+          <img style="width:14px; height:14px; position: absolute; right: 10px; margin: 0px" src="../../assets/icons/flech.png" alt="">
          </a>
       </div>
 
       <div>
-        <a mat-list-item (click)="listPageR()">
-          <span class="material-icons">
-            add_shopping_cart
-          </span>Reservations
-        </a>
+        <a mat-list-item (click)="listPageCo()">
+          <img style="width:50px; height:30px; margin: -8px" src="../../assets/icons/compensation.png" alt="">
+          Compensations
+          <img style="width:14px; height:14px; position: absolute; right: 10px; margin: 0px" src="../../assets/icons/flech.png" alt="">
+         </a>
       </div>
 
-      <div>
-        <a mat-list-item (click)="contactPage()">
-          <span class="material-icons">
-            contact_page
-          </span>Contact
-        </a>
-      </div>
 
     </mat-nav-list>
   </mat-sidenav>
@@ -90,7 +107,58 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>tibus</span>
+      
+      <span class="example-spacer">
+        <mat-nav-list>
+          <div>
+            <a mat-list-item (click)="homePage()">
+              Fournisseurs
+            </a>
+          </div>
+        </mat-nav-list>
+      </span>
+
+      <span class="example-spacer">
+        <mat-nav-list>
+          <div>
+            <a mat-list-item (click)="listPageU()">
+              Statistiques
+              <img style="width:14px; height:14px; position: absolute; right: 10px; margin: 0px" src="../../assets/icons/flech.png" alt="">
+            </a>
+          </div>
+        </mat-nav-list>
+      </span>
+
+      <span class="example-spacer">
+        <mat-nav-list>
+          <div>
+            <a mat-list-item (click)="listPageC()">
+              Stations
+            </a>
+          </div>
+        </mat-nav-list>
+      </span>
+
+      <span class="example-spacer">
+        <mat-nav-list>
+          <div>
+            <a mat-list-item (click)="listPageB()">
+              Transport
+            </a>
+          </div>
+        </mat-nav-list>
+      </span>
+
+      <span class="example-spacer">
+        <mat-nav-list>
+          <div>
+            <a mat-list-item (click)="listPageP()">
+              Message
+            </a>
+          </div>
+        </mat-nav-list>
+      </span>
+      
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>

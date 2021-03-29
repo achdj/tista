@@ -1,0 +1,41 @@
+pour lancer le serveur 
+ng serve --o
+
+pour créer un component
+ng g c nom
+ex: ng g c tista/pompes
+
+pour créer un service
+ng g s nom
+ex: ng g s general/services/pompe
+
+Pour compiler totalement
+ng build --prod --output-path=dist/tista+ --deploy-url=/tista+  --base-href=/tista+
+
+
+Git global setup
+git config --global user.name 
+git config --global user.email
+
+Create a new repository
+git clone git@gitlab.com:
+cd tista+
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+
+Push an existing folder
+cd existing_folder
+git init
+git remote add origin git@gitlab.com:
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+Push an existing Git repository
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin git@gitlab.com:
+git push -u origin --all
+git push -u origin --tags

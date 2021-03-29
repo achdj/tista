@@ -5,21 +5,26 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    /*apiKey: "AIzaSyDqzhqTac0GVyzAEEIpeGtxbXc_ZKQEXGo",
-    authDomain: "tibus-6d312.firebaseapp.com",
-    databaseURL: "https://tibus-6d312-default-rtdb.firebaseio.com",
-    projectId: "tibus-6d312",
-    storageBucket: "tibus-6d312.appspot.com",
-    messagingSenderId: "355227239694",
-    appId: "1:355227239694:web:19a55012cc84ac06b0835f"*/
+    /*apiKey: "AIzaSyDdvty-QwhxL7QLUBzxVETbQpmCh_ztvHQ",
+    authDomain: "baset-6dfb1.firebaseapp.com",
+    databaseURL: "https://baset-6dfb1-default-rtdb.firebaseio.com/",
+    projectId: "baset-6dfb1",
+    storageBucket: "baset-6dfb1.appspot.com",
+    messagingSenderId: "111604848823",
+    appId: "1:111604848823:web:8e758a601697705e4b9532"
+    "rules": {
+        ".read": true,
+        ".write": "auth.uid != null"
+    }*/
 
-    apiKey: "AIzaSyD01mY7yLaDb3BwyFI7FfyhdUTgSLt3aCA",
-    authDomain: "tibusdatabase.firebaseapp.com",
-    databaseURL: "https://tibusdatabase-default-rtdb.firebaseio.com/",
-    projectId: "tibusdatabase",
-    storageBucket: "tibusdatabase.appspot.com",
-    messagingSenderId: "87008087331",
-    appId: "1:87008087331:web:a612d564b586db6c1c9096"
+
+    apiKey: "AIzaSyBCvH0_g96u9gGNf2NKHsLO3OZpSKmcYW0",
+    authDomain: "tista-f651d.firebaseapp.com",
+    databaseURL: "https://tista-f651d-default-rtdb.firebaseio.com",
+    projectId: "tista-f651d",
+    storageBucket: "tista-f651d.appspot.com",
+    messagingSenderId: "923403326075",
+    appId: "1:923403326075:web:ca4a913009dc9b83d508de"
 
   }
 };
