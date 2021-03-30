@@ -10,7 +10,7 @@ ng g s nom
 ex: ng g s general/services/pompe
 
 Pour compiler totalement
-ng build --prod --output-path=dist/tista+ --deploy-url=/tista+  --base-href=/tista+
+ng build --prod --output-path=dist/tista --deploy-url=/tista  --base-href=/tista
 
 
 Git global setup
@@ -19,7 +19,7 @@ git config --global user.email
 
 Create a new repository
 git clone git@gitlab.com:
-cd tista+
+cd tista
 touch README.md
 git add README.md
 git commit -m "add README"

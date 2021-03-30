@@ -46,11 +46,16 @@ import { StocksComponent } from './tista/stocks/stocks.component';
 import { StockComponent } from './tista/stocks/stock/stock.component';
 import { StockListComponent } from './tista/stocks/stock-list/stock-list.component';
 import { StockService } from './general/services/stock.service';
+import { ClientsComponent } from './tista/clients/clients.component';
+import { ClientComponent } from './tista/clients/client/client.component';
+import { ClientListComponent } from './tista/clients/client-list/client-list.component';
+import { ClientService } from './general/services/client.service';
 
 const approutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'pompes', component:PompesComponent},
   { path: 'stocks', component:StocksComponent},
+  { path: 'clients', component:ClientsComponent},
   //{ path: 'login', component: LoginComponent },
 
 ]
@@ -67,6 +72,9 @@ const approutes: Routes = [
     StocksComponent,
     StockComponent,
     StockListComponent,
+    ClientsComponent,
+    ClientComponent,
+    ClientListComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,8 +110,8 @@ const approutes: Routes = [
     HttpClientModule
 
   ],
-  providers: [PompeService, StockService, PaysService, DatePipe],
+  providers: [PompeService, StockService, ClientService, PaysService, DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[PompeComponent, StockComponent, MatConfirmDialogComponent]
+  entryComponents:[PompeComponent, StockComponent, ClientComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }

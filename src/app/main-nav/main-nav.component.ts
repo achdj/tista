@@ -21,6 +21,11 @@ export class MainNavComponent implements OnInit{
   urlNameV= 'ventes';
   urlNameD = 'depenses';
   urlNameCo = 'compensations';
+  urlNameF = 'foutnisseurs';
+  urlNameSt = 'statisqtiques';
+  urlNameSta = 'stations';
+  urlNameT = 'transports';
+  urlNameM = 'messages';
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -82,5 +87,30 @@ export class MainNavComponent implements OnInit{
   //route pour les compensations
   listPageCo(){
     this.router.navigate([this.urlNameCo]);
+  }
+
+  //route pour les fournisseurs
+  listPageF(){
+    this.router.navigate([this.urlNameF]);
+  }
+
+  //route pour les statistiques
+  listPageSt(){
+    this.router.navigate([this.urlNameSt]);
+  }
+
+  //route pour les stations
+  listPageSta(){
+    this.router.navigate([this.urlNameSta]);
+  }
+
+  //route pour les transports
+  listPageT(){
+    this.router.navigate([this.urlNameT]);
+  }
+
+  //route pour les messages
+  listPageM(){
+    this.router.navigate([this.urlNameM]);
   }
 }

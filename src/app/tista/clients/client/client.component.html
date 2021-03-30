@@ -1,0 +1,80 @@
+<mat-toolbar>
+    <span>
+        {{service.form.controls['$key'].value?"Modifier client":"Nouveau client" }}
+    </span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabindex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+
+<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+            <div class="controles-container">
+                
+                <input type="hidden" formControlName="$key">
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="email" placeholder="Email*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="nom" placeholder="Nom*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="prenom" placeholder="Prenom*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="adresse" placeholder="Adresse*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="phoneNumber" placeholder="Numero*">
+                    <mat-error *ngIf="service.form.controls['phoneNumber'].errors?.required">Ce champ est obligatoire
+                    </mat-error>
+                    <mat-error *ngIf="service.form.controls['phoneNumber'].errors?.minlength">Minimum 8 caratères requis
+                    </mat-error>
+                </mat-form-field>
+                
+                
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="controles-container">
+
+                <mat-form-field appearance="legacy">
+                    <mat-label>Client depuis?</mat-label>
+                    <input matInput formControlName="menberSince" [matDatepicker]="picker" placeholder="Client depuis">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy">
+                    <mat-select formControlName="sex" placeholder="Sexe">
+                        <mat-option>None</mat-option>
+                        <ng-container *ngFor="let sex of sexs">
+                            <mat-option value="{{sex.Id}}">{{sex.name}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy">
+                    <mat-label>Naissance</mat-label>
+                    <input matInput formControlName="dob" [matDatepicker]="picker2" placeholder="Naissance">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+                
+                <div class="add-bottom-padding">
+                    <mat-checkbox formControlName="isActivate"> Activée</mat-checkbox>
+                </div>
+                <div class="button-row">
+                    <button mat-raised-button color="primary" type="submit"
+                        [disabled]="service.form.invalid">Enregistrer</button>
+                    <button mat-raised-button color="warn" (click)="onClear()">Annuler</button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</form>
