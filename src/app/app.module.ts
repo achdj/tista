@@ -52,12 +52,22 @@ import { ClientsComponent } from './tista/clients/clients.component';
 import { ClientComponent } from './tista/clients/client/client.component';
 import { ClientListComponent } from './tista/clients/client-list/client-list.component';
 import { ClientService } from './general/services/client.service';
+import { VentesComponent } from './tista/ventes/ventes.component';
+import { VenteComponent } from './tista/ventes/vente/vente.component';
+import { VenteListComponent } from './tista/ventes/vente-list/vente-list.component';
+import { VenteService } from './general/services/vente.service';
+import { DepensesComponent } from './tista/depenses/depenses.component';
+import { DepenseComponent } from './tista/depenses/depense/depense.component';
+import { DepenseListComponent } from './tista/depenses/depense-list/depense-list.component';
+import { DepenseService } from './general/services/depense.service';
 
 const approutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'pompes', component:PompesComponent},
   { path: 'stocks', component:StocksComponent},
   { path: 'clients', component:ClientsComponent},
+  { path: 'ventes', component:VentesComponent},
+  { path: 'depenses', component:DepensesComponent},
   //{ path: 'login', component: LoginComponent },
 
 ]
@@ -77,6 +87,12 @@ const approutes: Routes = [
     ClientsComponent,
     ClientComponent,
     ClientListComponent,
+    VentesComponent,
+    VenteComponent,
+    VenteListComponent,
+    DepensesComponent,
+    DepenseComponent,
+    DepenseListComponent,
   ],
   imports: [
     BrowserModule,
@@ -114,8 +130,8 @@ const approutes: Routes = [
     NgApexchartsModule
 
   ],
-  providers: [PompeService, StockService, ClientService, PaysService, DatePipe],
+  providers: [PompeService, StockService, ClientService, VenteService, PaysService, DepenseService,  DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[PompeComponent, StockComponent, ClientComponent, MatConfirmDialogComponent]
+  entryComponents:[PompeComponent, StockComponent, ClientComponent, VenteComponent, DepenseComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }
