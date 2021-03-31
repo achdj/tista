@@ -21,6 +21,12 @@ export class MainNavComponent implements OnInit{
   urlNameV= 'ventes';
   urlNameD = 'depenses';
   urlNameCo = 'compensations';
+
+  urlNameBstat = 'bstatistiques';
+  urlNameBsto= 'bstocks';
+  urlNameBvente = 'bventes';
+  urlNameBfact = 'bfactures';
+
   urlNameF = 'foutnisseurs';
   urlNameSt = 'statisqtiques';
   urlNameSta = 'stations';
@@ -88,6 +94,24 @@ export class MainNavComponent implements OnInit{
   listPageCo(){
     this.router.navigate([this.urlNameCo]);
   }
+
+  //route pour la boutique
+    //stat de la boutique
+    listPageBstat(){
+      this.router.navigate([this.urlNameBstat]);
+    }
+    //stock de la boutique
+    listPageBsto(){
+      this.router.navigate([this.urlNameBsto]);
+    }
+    //vente de la boutique
+    listPageBvente(){
+      this.router.navigate([this.urlNameBvente]);
+    }
+    //facture de la boutique
+    listPageBfact(){
+      this.router.navigate([this.urlNameBfact]);
+    }
 
   //route pour les fournisseurs
   listPageF(){

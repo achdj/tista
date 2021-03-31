@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApexOptions } from 'apexcharts';
 import { ChartsModule } from 'ng2-charts';
 //import { ToasterService } from 'angular2-toaster';
 /*export var lineChartLegend = true;
@@ -11,11 +12,14 @@ export var lineChartType = 'line';*/
 })
 export class HomeComponent implements OnInit {
 
-  
+  series: ApexAxisChartSeries; 
+  chart: ApexChart;
+  title: ApexTitleSubtitle;
+
   constructor( ) { }
 
   ngOnInit(): void {
-  
+    this.initializeChartOptions();  
   }
 
 
@@ -69,6 +73,22 @@ export class HomeComponent implements OnInit {
     console.log(e);
   }
 
+  //pour le second
+  private initializeChartOptions(): void{
+    this.title = {
+      text: 'Langue de la population'
+    };
+
+    this.series = [{
+      name: 'java',
+      data: [12, 10, 19]
+    }];
+
+    this.chart = {
+      type: 'bar',
+      width: 250
+    };
+  }
 
   //pour le rond
   chartOptions = {

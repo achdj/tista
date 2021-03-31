@@ -14,6 +14,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select'; 
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatMenuModule} from '@angular/material/menu'; 
 
 import { ChartsModule } from 'ng2-charts';
 import { NgApexchartsModule } from 'ng-apexcharts';
@@ -60,6 +61,18 @@ import { DepensesComponent } from './tista/depenses/depenses.component';
 import { DepenseComponent } from './tista/depenses/depense/depense.component';
 import { DepenseListComponent } from './tista/depenses/depense-list/depense-list.component';
 import { DepenseService } from './general/services/depense.service';
+//pour boutique
+import { BstatistiquesComponent } from './tista/boutiques/bstatistiques/bstatistiques.component';
+import { BfacturesComponent } from './tista/boutiques/bfactures/bfactures.component';
+import { BfactureListeComponent } from './tista/boutiques/bfactures/bfacture-liste/bfacture-liste.component';
+import { BventesComponent } from './tista/boutiques/bventes/bventes.component';
+import { BventeComponent } from './tista/boutiques/bventes/bvente/bvente.component';
+import { BventeListeComponent } from './tista/boutiques/bventes/bvente-liste/bvente-liste.component';
+import { BventeService } from './general/services/boutique/bvente.service';
+import { BstocksComponent } from './tista/boutiques/bstocks/bstocks.component';
+import { BstockComponent } from './tista/boutiques/bstocks/bstock/bstock.component';
+import { BstockListeComponent } from './tista/boutiques/bstocks/bstock-liste/bstock-liste.component';
+import { BstockService } from './general/services/boutique/bstock.service';
 
 const approutes: Routes = [
   { path: '', component: HomeComponent },
@@ -68,6 +81,11 @@ const approutes: Routes = [
   { path: 'clients', component:ClientsComponent},
   { path: 'ventes', component:VentesComponent},
   { path: 'depenses', component:DepensesComponent},
+  { path: 'bstatistiques', component:BstatistiquesComponent},
+  { path: 'bfactures', component:BfacturesComponent},
+  { path: 'bventes', component:BventesComponent},
+  { path: 'bstocks', component:BstocksComponent},
+  
   //{ path: 'login', component: LoginComponent },
 
 ]
@@ -93,12 +111,22 @@ const approutes: Routes = [
     DepensesComponent,
     DepenseComponent,
     DepenseListComponent,
+    BstatistiquesComponent,
+    BfacturesComponent,
+    BfactureListeComponent,
+    BventesComponent,
+    BventeComponent,
+    BventeListeComponent,
+    BstocksComponent,
+    BstockComponent,
+    BstockListeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+    MatMenuModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -130,8 +158,8 @@ const approutes: Routes = [
     NgApexchartsModule
 
   ],
-  providers: [PompeService, StockService, ClientService, VenteService, PaysService, DepenseService,  DatePipe],
+  providers: [PompeService, StockService, ClientService, VenteService, PaysService, DepenseService, BventeService, BstockService, DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[PompeComponent, StockComponent, ClientComponent, VenteComponent, DepenseComponent, MatConfirmDialogComponent]
+  entryComponents:[PompeComponent, StockComponent, ClientComponent, VenteComponent, DepenseComponent, BventeComponent, BstockComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }

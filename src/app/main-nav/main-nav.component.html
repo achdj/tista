@@ -94,6 +94,23 @@
          </a>
       </div>
 
+      <div>
+        <a mat-list-item>
+          <img style="width:50px; height:30px; margin: -8px" src="../../assets/icons/compensation.png" alt="">
+          <button mat-button [matMenuTriggerFor]="menu">
+            Boutique</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="listPageBstat()">Statistique</button>
+            <button mat-menu-item (click)="listPageBsto()">Stock</button>
+            <button mat-menu-item (click)="listPageBvente()">Vente avec facturation</button>
+            <button mat-menu-item (click)="listPageBfact()">Liste des facture</button>
+          </mat-menu>
+
+          <img style="width:14px; height:14px; position: absolute; right: 10px; margin: 0px; -ms-transform: rotate(180deg); /* IE 9 */
+          transform: rotate(90deg);" src="../../assets/icons/flech.png" alt="">
+         </a>
+      </div>
+
 
     </mat-nav-list>
   </mat-sidenav>
