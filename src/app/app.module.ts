@@ -15,6 +15,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+import { ChartsModule } from 'ng2-charts';
+import { NgApexchartsModule } from 'ng-apexcharts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -107,7 +109,9 @@ const approutes: Routes = [
     MatSnackBarModule,
     CommonModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule,
+    NgApexchartsModule
 
   ],
   providers: [PompeService, StockService, ClientService, PaysService, DatePipe],

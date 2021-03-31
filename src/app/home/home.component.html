@@ -1,25 +1,70 @@
-<div class="">
-    <h3 class="center">Bienvenu sur Tista+</h3>
-    <h4 class="center">STATISTIQUES</h4>
+<div class="container">
+    <mat-toolbar>
+        <span class="fill-remaining-space"></span>
+        <span>TABLEAU DE BORD</span>
+        <span class="fill-remaining-space"></span>
+    </mat-toolbar>
+    
     <div class="wrapper">
-        <div class="trajet-list"><!--single-pricing-->
+    
+        <div>
             
-        </div>  
-        <div class="trajet-list"><!--single-pricing-->
-            <ul class="deals">
+            <div class="wrapper">
+                <div class="vente-list"><!--vente total-->
+                    vente total
+                    <canvas id="bar-line1"  height="340" baseChart class="chart" 
+                        [datasets]="lineChartData" [labels]="lineChartLabels" 
+                        [options]="lineChartOptions" [colors]="lineChartColors"
+                        [legend]="lineChartLegend" [chartType]="lineChartType" 
+                        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" > 
+                    </canvas>
+                </div>  
+                <div class="vente-list"><!--vente par pompe-->
+                    vente par pompe
+                    <ul class="deals">
+                        <apx-chart [series]="series" [chart]="chart" [title]="title"></apx-chart>
+                    </ul>
+                </div>  
+                <div class="vente-list"><!--vente par pistolet-->
+                    vente par pistolet
+                </div>  
+                <div class="vente-list"><!--vente par pompiste-->
+                    vente par pompiste
+                    <ul class="deals">
+                        
+                    </ul>
+                </div> 
+                                 
+            </div>
+        </div>
+    
+        <div class="">
+            <div class="wrapper2">
+                <div class="vente-list">
+                    Gains
+                </div>  
+        
+                <div class="vente2-list">
+                    <div>
+                        chart rond
+                        <canvas width="400px"
+                        baseChart
+                        [chartType]="lChartType" 
+                        [datasets]="chartDatasets"
+                        [labels]="chartLabels" 
+                        [options]="chartOptions"
+                        [legend]="true"> 
+                        </canvas>
+                    </div>
+                </div>  
+        
+                <div class="vente-list">
+                        analyse
+                </div>  
                 
-            </ul>
-        </div>  
-        <div class="trajet-list"><!--single-pricing-->
-            
-        </div>  
-        <div class="trajet-list"><!--single-pricing-->
-            <ul class="deals">
-                
-            </ul>
-        </div> 
-        <div class="trajet-list"><!--single-pricing-->
-            
-        </div>                    
+            </div>
+        </div>   
+        
     </div>
 </div>
+

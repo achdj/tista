@@ -52,45 +52,45 @@ export class StockService {
   }
 
 
-  getPompes() {
-    this.stockList = this.firebase.list("pompes");
+  getStocks() {
+    this.stockList = this.firebase.list("stocks");
     return this.stockList.snapshotChanges();
   }
 
   
-  insertPompe(pompe) {
+  insertStock(stock) {
     this.stockList.push({
-      description: pompe.description,
-      prixU: pompe.prixU,
-      quantite: pompe.quantite,
-      isActivate: pompe.isActivate
+      description: stock.description,
+      prixU: stock.prixU,
+      quantite: stock.quantite,
+      isActivate: stock.isActivate
     });
   }
 
-  updatePompe(pompe) {
-    this.stockList.update(pompe.$key,
+  updateStock(stock) {
+    this.stockList.update(stock.$key,
       {
-        description: pompe.description,
-        prixU: pompe.prixU,
-        quantite: pompe.quantite,
-        isActivate: pompe.isActivate
+        description: stock.description,
+        prixU: stock.prixU,
+        quantite: stock.quantite,
+        isActivate: stock.isActivate
       });
   }
 
-  deletePompe($key: string) {
+  deleteStock($key: string) {
     this.stockList.remove($key);
   }
 
-  populateForm(pompe){
+  populateForm(stock){
     //this.form.setValue(_.omit(compagnie, 'busNom')); si on recupère avec une info d'autre service
-    this.form.setValue(_.omit(pompe, ''));
+    this.form.setValue(_.omit(stock, ''));
   }
 
-  getPompeRef($key) {
+  getDescStock($key) {
     if ($key == "0")
       return "";
     else{
-      return _ .find(this.array, (obj) => { return obj.$key == $key; })['reference'];
+      return _ .find(this.array, (obj) => { return obj.$key == $key; })['description'];
     }
   }
   
