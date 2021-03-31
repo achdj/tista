@@ -79,7 +79,7 @@ export class MainNavComponent implements OnInit{
     this.router.navigate([this.urlNameV]);
   }
 
-  //route pour les déoenses
+  //route pour les dépenses
   listPageD() {
     this.router.navigate([this.urlNameD]);
   }
