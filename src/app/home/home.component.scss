@@ -24,28 +24,36 @@ div.container{
     display: flex;
     padding: 1px;
     flex-wrap: wrap;
+    margin: 1 1 auto;
 }
 
 .wrapper2{
     display: flex;
     padding: 1px;
     flex-wrap: wrap;
+    margin: 1 1 auto;
 }
 .vente-list{
-    width: 250px;
+    width: 210px;
     height: 200px;
-    border-radius: .5em;
-    border: 5px solid rgb(111,41,97);
+    /*border-radius: .5em;
+    border: 5px solid rgb(111,41,97);*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    margin-bottom: 20px;
+    margin-right: auto;
+}
+
+.vente2-list{
+    width: 320px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: space-between;
     margin-bottom: 9px;
-}
-
-.vente2-list{
-    width: 350px;
-    border: 5px solid rgb(111,41,97);
+    margin-right: auto;
 }
 .trajet-list:not(:last-child){
     margin-right: 16px;

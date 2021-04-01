@@ -5,10 +5,8 @@
         <span class="fill-remaining-space"></span>
     </mat-toolbar>
     
-    <div class="wrapper">
-    
-        <div>
-            
+    <div class="">
+                
             <div class="wrapper">
                 <div class="vente-list"><!--vente total-->
                     vente total
@@ -20,37 +18,41 @@
                     </canvas>
                 </div>  
                 <div class="vente-list"><!--vente par pompe-->
-                    vente par pompe
-                    <ul class="deals">
-                        <apx-chart 
-                        [series]="series" 
-                        [chart]="chart" 
-                        [title]="title"></apx-chart>
-                    </ul>
+                
+                    <apx-chart 
+                    [series]="series" 
+                    [chart]="chart" 
+                    [title]="title"></apx-chart>                    
                 </div>  
                 <div class="vente-list"><!--vente par pistolet-->
-                    vente par pistolet
+                    
+                    <apx-chart 
+                    [series]="series2" 
+                    [chart]="chart2" 
+                    [title]="title2"></apx-chart>
                 </div>  
                 <div class="vente-list"><!--vente par pompiste-->
-                    vente par pompiste
-                    <ul class="deals">
-                        
-                    </ul>
+                    <apx-chart 
+                    [series]="series2" 
+                    [chart]="chart2" 
+                    [title]="title2"></apx-chart>
                 </div> 
-                                 
-            </div>
-        </div>
-    
-        <div class="">
-            <div class="wrapper2">
-                <div class="vente-list">
-                    Gains
+
+                <div class="vente2-list">
+                    <apx-chart 
+                    [series]="series4" 
+                    [chart]="chart4" 
+                    [title]="title4"
+                    [xaxis]="xaxis4"
+                    [yaxis]="yaxis4"
+                    [plotOptions]="plotOptions4"
+                    [dataLabels]="dataLabels4">
+                    </apx-chart>
                 </div>  
         
                 <div class="vente2-list">
                     <div>
-                        chart rond
-                        <canvas width="400px"
+                        <canvas width="320px"
                         baseChart
                         [chartType]="lChartType" 
                         [datasets]="chartDatasets"
@@ -61,12 +63,18 @@
                     </div>
                 </div>  
         
-                <div class="vente-list">
-                        analyse
+                <div class="vente2-list">
+                    <apx-chart width="auto"
+                    [series]="series6" 
+                    [chart]="chart6" 
+                    [title]="title6"
+                    [xaxis]="xaxis6"
+                    [plotOptions]="plotOptions6"
+                    [dataLabels]="dataLabels6">
+                    </apx-chart>
                 </div>  
-                
-            </div>
-        </div>   
+                                 
+            </div>    
         
     </div>
 </div>
