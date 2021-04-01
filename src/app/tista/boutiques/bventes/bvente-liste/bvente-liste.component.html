@@ -1,1 +1,57 @@
-<p>vente-liste works!</p>
+<div class="search-div">
+    <button mat-raised-button (click)="onCreate()">
+        <mat-icon>add</mat-icon>Create
+    </button>
+    <mat-form-field class="search-form-field" floatLabel="never">
+        <input matInput [(ngModel)]="searchKey" placeholder="Recherche" autocomplete="off" (keyup)="applyFilter()">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="listData" matSort>
+        <ng-container matColumnDef="priceU">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> priceU </th>
+            <td mat-cell *matCellDef="let element"> {{element.priceU}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Qte">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Qte </th>
+            <td mat-cell *matCellDef="let element"> {{element.Qte}} </td>
+        </ng-container>
+        <ng-container matColumnDef="remise">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Remise </th>
+            <td mat-cell *matCellDef="let element"> {{element.remise}} </td>
+        </ng-container>
+        <ng-container matColumnDef="perte">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Perte </th>
+            <td mat-cell *matCellDef="let element"> {{element.perte}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let row">
+                <button mat-icon-button (click)="onEdit(row)">
+                    <mat-icon>launch</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="onDelete(row.$key)">
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="loading">
+            <td mat-footer-cell *matFooterCellDef colspan="9" class="mfooter"> Chargement des donnnees... </td>
+        </ng-container>
+        <ng-container matColumnDef="noData">
+            <td mat-footer-cell *matFooterCellDef colspan="9" class="mfooter"> Aucunes donnnees... </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}" class="mfooter"></tr>
+        <tr mat-footer-row *matFooterRowDef="['noData']"
+            [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}" class="mfooter"></tr>
+    </table>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+    </mat-paginator>
+</div>
