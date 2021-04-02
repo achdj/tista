@@ -35,8 +35,8 @@ export class PompeService {
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
     reference: new FormControl('', Validators.required),
-    produit: new FormControl('', Validators.required),
-    quantite: new FormControl('', Validators.required),
+    //produit: new FormControl('', Validators.required),
+    //quantite: new FormControl('', Validators.required),
     isActivate: new FormControl(false)
   });
   
@@ -44,8 +44,8 @@ export class PompeService {
     this.form.setValue({
       $key: null,
       reference: '',
-      produit: '',
-      quantite: '',
+      //produit: '',
+      //quantite: '',
       isActivate: false
     });
   }
@@ -60,8 +60,8 @@ export class PompeService {
   insertPompe(pompe) {
     this.pompeList.push({
       reference: pompe.reference,
-      produit: pompe.produit,
-      quantite: pompe.quantite,
+      //produit: pompe.produit,
+      //quantite: pompe.quantite,
       isActivate: pompe.isActivate
     });
   }
@@ -70,8 +70,8 @@ export class PompeService {
     this.pompeList.update(pompe.$key,
       {
         reference: pompe.reference,
-        produit: pompe.produit,
-        quantite: pompe.quantite,
+        //produit: pompe.produit,
+        //quantite: pompe.quantite,
         isActivate: pompe.isActivate
       });
   }

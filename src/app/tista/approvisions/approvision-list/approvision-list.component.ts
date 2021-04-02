@@ -1,41 +1,44 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PompeService } from 'src/app/general/services/pompe.service';
+import { ApprovisionService } from 'src/app/general/services/approvision.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { PompeComponent } from '../pompe/pompe.component';
+import { ApprovisionComponent } from '../approvision/approvision.component';
 import { NotificationService } from 'src/app/general/services/notification.service';
 import { DialogService } from 'src/app/general/services/dialog.service';
+import { CuveService } from 'src/app/general/services/cuve.service';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
-  selector: 'app-pompe-list',
-  templateUrl: './pompe-list.component.html',
-  styleUrls: ['./pompe-list.component.scss']
+  selector: 'app-approvision-list',
+  templateUrl: './approvision-list.component.html',
+  styleUrls: ['./approvision-list.component.scss']
 })
-export class PompeListComponent implements OnInit {
+export class ApprovisionListComponent implements OnInit {
 
   constructor(
-    private service: PompeService,
+    private service: ApprovisionService,
+    private cuveService: CuveService,
     private dialog: MatDialog,
     private notificationService: NotificationService,
     private dialogService: DialogService,
     ) { }
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['reference', /*'produit', 'quantite', */'isActivate','actions'];
+  displayedColumns: string[] = ['referenceApp', 'cuveRef', 'quantiteApp', 'coutTr', 'prixAchat', 'prixRevien', 'dateApp', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
 
   ngOnInit(): void {
-    this.service.getPompes().subscribe(
+    this.service.getApprovisions().subscribe(
       list => {
         let array = list.map(item => {
+          let cuveRef = this.cuveService.getCuveRef(item.payload.val()['referenceC']);
           return {
             $key: item.key,
+            cuveRef,
             ...item.payload.val()
           };
         });
@@ -66,7 +69,7 @@ export class PompeListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    this.dialog.open(PompeComponent, dialogConfig);
+    this.dialog.open(ApprovisionComponent, dialogConfig);
   }
 
   onEdit(row){
@@ -75,7 +78,7 @@ export class PompeListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true; 
     dialogConfig.width = "60%";
-    this.dialog.open(PompeComponent, dialogConfig);
+    this.dialog.open(ApprovisionComponent, dialogConfig);
   }
 
   onDelete($key){
@@ -87,7 +90,7 @@ export class PompeListComponent implements OnInit {
     this.dialogService.openConfirmDialog('Êtes-vous sûr de supprimer cet enregistrement?')
     .afterClosed().subscribe(res =>{
       if(res){
-        this.service.deletePompe($key);
+        this.service.deleteApprovision($key);
         this.notificationService.warn('! Supprimer avec succes');
       }
     });
@@ -95,3 +98,4 @@ export class PompeListComponent implements OnInit {
   }
 
 }
+

@@ -14,8 +14,11 @@ export class MainNavComponent implements OnInit{
   urlNameH = '/';
   urlNameU = 'users';
   urlNameC = 'cartes';
+  urlNameApp = 'approvisions';
   urlNameB = 'bons';
+  urlNameCuv = 'cuves';
   urlNameP = 'pompes';
+  urlNamePi = 'pistolets'
   urlNameS = 'stocks';
   urlNameCl = 'clients';
   urlNameV= 'ventes';
@@ -65,9 +68,24 @@ export class MainNavComponent implements OnInit{
     this.router.navigate([this.urlNameB]);
   }
 
+  //route pour les approvisionnement
+  listPageApp() {
+    this.router.navigate([this.urlNameApp]);
+  }
+  
+  //route pour les cuves
+  listPageCuv() {
+    this.router.navigate([this.urlNameCuv]);
+  }
+
   //route pour les pompes
   listPageP() {
     this.router.navigate([this.urlNameP]);
+  }
+
+  //route pour les pistolet
+  listPagePi() {
+    this.router.navigate([this.urlNamePi]);
   }
 
   //route pour les stocks

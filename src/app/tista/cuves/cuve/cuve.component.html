@@ -1,6 +1,6 @@
 <mat-toolbar>
     <span>
-        {{service.form.controls['$key'].value?"Modifier pompe":"Nouvelle pompe" }}
+        {{service.form.controls['$key'].value?"Modifier cuve":"Nouvelle cuve" }}
     </span>
     <span class="fill-remaining-space"></span>
     <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabindex="-1"><mat-icon>clear</mat-icon></button>
@@ -13,27 +13,32 @@
                 
                 <input type="hidden" formControlName="$key">
                 <mat-form-field appearance="legacy">
-                    <input type="text" matInput formControlName="reference" placeholder="Réference*">
+                    <input type="text" matInput formControlName="referenceC" placeholder="Réference cuve*">
                     <mat-error>Ce champ est obligatoire</mat-error>
                 </mat-form-field>
-                <!--mat-form-field appearance="legacy">
-                    <input type="text" matInput formControlName="produit" placeholder="Produit*">
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="produitC" placeholder="Produit cuve*">
                     <mat-error>Ce champ est obligatoire</mat-error>
-                </mat-form-field-->
+                </mat-form-field>
                 
             </div>
         </mat-grid-tile>
         <mat-grid-tile>
             <div class="controles-container">
                 
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="volumeC" #fondovalor placeholder="Volume cuve*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
                 <!--mat-form-field appearance="legacy">
-                    <input type="text" matInput formControlName="quantite" placeholder="Quantite*">
+                    <input type="text" matInput formControlName="quantiteAjoute" #box (keyup)="onKey()" readonly placeholder="Dernière quantité ajouté">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="quantiteActuel" [(ngModel)]="cq" readonly placeholder="quantite Actuel">
                     <mat-error>Ce champ est obligatoire</mat-error>
                 </mat-form-field-->
                 
-                <div class="add-bottom-padding">
-                    <mat-checkbox formControlName="isActivate"> Activée</mat-checkbox>
-                </div>
                 <div class="button-row">
                     <button mat-raised-button color="primary" type="submit"
                         [disabled]="service.form.invalid">Enregistrer</button>

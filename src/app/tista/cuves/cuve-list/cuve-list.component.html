@@ -12,30 +12,27 @@
 
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="listData" matSort>
-        <ng-container matColumnDef="reference">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Reference </th>
-            <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+        <ng-container matColumnDef="referenceC">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Reference Cuve </th>
+            <td mat-cell *matCellDef="let element"> {{element.referenceC}} </td>
         </ng-container>
-        <!--ng-container matColumnDef="produit">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Produit </th>
-            <td mat-cell *matCellDef="let element"> {{element.produit}} </td>
+        <ng-container matColumnDef="produitC">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Produit Cuve </th>
+            <td mat-cell *matCellDef="let element"> {{element.produitC}} </td>
         </ng-container>
-        <ng-container matColumnDef="quantite">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantité </th>
-            <td mat-cell *matCellDef="let element"> {{element.quantite}} </td>
-        </ng-container-->
+        <ng-container matColumnDef="volumeC">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Volume cuve </th>
+            <td mat-cell *matCellDef="let element"> {{element.volumeC}} m³</td>
+        </ng-container>
+        <ng-container matColumnDef="quantiteAjoute">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Dernière quantité approvisionné </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantiteAjoute}} m³</td>
+        </ng-container>
+        <ng-container matColumnDef="quantiteActuel">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantité actuel </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantiteActuel}} m³</td>
+        </ng-container>
         
-        <ng-container matColumnDef="isActivate">
-            <th mat-header-cell *matHeaderCellDef> Activée </th>
-            <td mat-cell *matCellDef="let element">
-                <div *ngIf="element.isActivate != 0; else elseDiv">
-                    <span style="color: green;">Oui</span>
-                </div>
-                <ng-template #elseDiv>
-                    <span style="color: red;">Non</span>
-                </ng-template>
-            </td>
-        </ng-container>
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let row">
@@ -48,10 +45,10 @@
             </td>
         </ng-container>
         <ng-container matColumnDef="loading">
-            <td mat-footer-cell *matFooterCellDef colspan="2" class="mfooter"> Chargement des donnnees... </td>
+            <td mat-footer-cell *matFooterCellDef colspan="6" class="mfooter"> Chargement des donnnees... </td>
         </ng-container>
         <ng-container matColumnDef="noData">
-            <td mat-footer-cell *matFooterCellDef colspan="2" class="mfooter"> Aucunes donnnees... </td>
+            <td mat-footer-cell *matFooterCellDef colspan="6" class="mfooter"> Aucunes donnnees... </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -1,0 +1,78 @@
+<mat-toolbar>
+    <span>
+        {{service.form.controls['$key'].value?"Modifier pistolet":"Nouveau pistolet" }}
+    </span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabindex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+
+<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+            <div class="controles-container">  
+                <input type="hidden" formControlName="$key">
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="referencePi" placeholder="Référence pompe*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="number" matInput formControlName="indexI" #indexinitial (keyup)="onKey()" placeholder="Index initial*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="number" matInput formControlName="indexF" #indexfinal (keyup)="onKey()" placeholder="Index final*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="number" matInput formControlName="indexR" #indexrestant [(ngModel)]="indf" readonly placeholder="Index restant*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="number" matInput formControlName="prixUPi" #prixunitaire (keyup)="onKey()" placeholder="Prix unitaire/Litre*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="controles-container">
+                
+                <mat-form-field appearance="legacy">
+                    <mat-select formControlName="cuves" placeholder="Cuve connecté">
+                        <mat-option>None</mat-option>
+                        <ng-container *ngFor="let cuves of cuveService.array">
+                            <mat-option value="{{cuves.$key}}">{{cuves.referenceC}}</mat-option>
+                        </ng-container>
+                        
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy">
+                    <mat-select formControlName="pompes" placeholder="Pompe connecté">
+                        <mat-option>None</mat-option>
+                        <ng-container *ngFor="let pompes of pompeService.array">
+                            <mat-option value="{{pompes.$key}}">{{pompes.reference}}</mat-option>
+                        </ng-container>
+                        
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy">
+                    <input type="number" matInput formControlName="montantPi" [(ngModel)]="mtne" readonly placeholder="Montant équivalent*">
+                </mat-form-field>
+                
+                <mat-form-field appearance="legacy">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput formControlName="datePi" [matDatepicker]="picker" placeholder="Date de modification">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <div class="button-row">
+                    <button mat-raised-button color="primary" type="submit"
+                        [disabled]="service.form.invalid">Enregistrer</button>
+                    <button mat-raised-button color="warn" (click)="onClear()">Annuler</button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</form>

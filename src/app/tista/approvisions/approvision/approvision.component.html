@@ -1,0 +1,66 @@
+<mat-toolbar>
+    <span>
+        {{service.form.controls['$key'].value?"Modifier approvisionnement":"Nouveau approvisionnement" }}
+    </span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabindex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+
+<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+            <div class="controles-container">
+                
+                <input type="hidden" formControlName="$key">
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput formControlName="referenceApp" placeholder="Référence de l'approvisionnement*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="number" matInput formControlName="quantiteApp" placeholder="Quantité à approvisionné* en m³">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="number" matInput formControlName="coutTr" #fondovalor (keyup)="onKey()" placeholder="coût du transport/Litre">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input type="number" matInput formControlName="prixAchat" #box (keyup)="onKey()" placeholder="Prix d'achat/Litre*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
+
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="controles-container">
+                
+                <mat-form-field appearance="legacy">
+                    <mat-select formControlName="cuves" placeholder="Cuve à approvisionné">
+                        <mat-option>None</mat-option>
+                        <ng-container *ngFor="let cuves of cuveService.array">
+                            <mat-option value="{{cuves.$key}}">{{cuves.referenceC}}</mat-option>
+                        </ng-container>
+                        
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy">
+                    <input type="number" matInput formControlName="prixRevien" [(ngModel)]="pr" readonly placeholder="Prix de revient/Litre*">
+                </mat-form-field>
+                
+                <mat-form-field appearance="legacy">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput formControlName="dateApp" [matDatepicker]="picker" placeholder="Date d'approvisionnement">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <div class="button-row">
+                    <button mat-raised-button color="primary" type="submit"
+                        [disabled]="service.form.invalid">Enregistrer</button>
+                    <button mat-raised-button color="warn" (click)="onClear()">Annuler</button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</form>

@@ -73,10 +73,25 @@ import { BstocksComponent } from './tista/boutiques/bstocks/bstocks.component';
 import { BstockComponent } from './tista/boutiques/bstocks/bstock/bstock.component';
 import { BstockListeComponent } from './tista/boutiques/bstocks/bstock-liste/bstock-liste.component';
 import { BstockService } from './general/services/boutique/bstock.service';
+import { CuvesComponent } from './tista/cuves/cuves.component';
+import { CuveComponent } from './tista/cuves/cuve/cuve.component';
+import { CuveListComponent } from './tista/cuves/cuve-list/cuve-list.component';
+import { CuveService } from './general/services/cuve.service';
+import { PistoletsComponent } from './tista/pistolets/pistolets.component';
+import { PistoletComponent } from './tista/pistolets/pistolet/pistolet.component';
+import { PistoletListComponent } from './tista/pistolets/pistolet-list/pistolet-list.component';
+import { PistoletService } from './general/services/pistolet.service';
+import { ApprovisionsComponent } from './tista/approvisions/approvisions.component';
+import { ApprovisionComponent } from './tista/approvisions/approvision/approvision.component';
+import { ApprovisionListComponent } from './tista/approvisions/approvision-list/approvision-list.component';
+import { ApprovisionService } from './general/services/approvision.service';
 
 const approutes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'approvisions', component:ApprovisionsComponent},
+  { path: 'cuves', component:CuvesComponent},
   { path: 'pompes', component:PompesComponent},
+  { path: 'pistolets', component:PistoletsComponent},
   { path: 'stocks', component:StocksComponent},
   { path: 'clients', component:ClientsComponent},
   { path: 'ventes', component:VentesComponent},
@@ -120,6 +135,15 @@ const approutes: Routes = [
     BstocksComponent,
     BstockComponent,
     BstockListeComponent,
+    CuvesComponent,
+    CuveComponent,
+    CuveListComponent,
+    PistoletsComponent,
+    PistoletComponent,
+    PistoletListComponent,
+    ApprovisionsComponent,
+    ApprovisionComponent,
+    ApprovisionListComponent,
   ],
   imports: [
     BrowserModule,
@@ -158,8 +182,8 @@ const approutes: Routes = [
     NgApexchartsModule
 
   ],
-  providers: [PompeService, StockService, ClientService, VenteService, PaysService, DepenseService, BventeService, BstockService, DatePipe],
+  providers: [ApprovisionService, CuveService, PompeService, PistoletService, StockService, ClientService, VenteService, PaysService, DepenseService, BventeService, BstockService, DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[PompeComponent, StockComponent, ClientComponent, VenteComponent, DepenseComponent, BventeComponent, BstockComponent, MatConfirmDialogComponent]
+  entryComponents:[ApprovisionComponent, CuveComponent ,PompeComponent, PistoletComponent, StockComponent, ClientComponent, VenteComponent, DepenseComponent, BventeComponent, BstockComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }
