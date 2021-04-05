@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import * as a from '@angular/fire';
 import { keys } from 'lodash-es';
-import * as _ from 'lodash';
+import * as _ from 'lodash-es';
 //import _ from "lodash";
+//import _ from "lodash/wrapperLodash";
 import { DatePipe } from '@angular/common';
 import { __assign } from 'tslib';
+import { fingerprint } from '@angular/compiler/src/i18n/digest';
 
 @Injectable({
   providedIn: 'root'
@@ -88,11 +91,27 @@ export class CuveService {
     this.form.setValue(_.omit(cuve, ''));
   }
 
+  getCuveVolume($key) {
+    if ($key == "0")
+      return "";
+    else{
+      return _ .find(this.array, (obj) => { return obj.$key == $key; })['volumeC'];  
+    }
+  }
+
+  getCuveQuantiteActuel($key) {
+    if ($key == "0")
+      return "";
+    else{
+      return _ .find(this.array, (obj) => { return obj.$key == $key; })['quantiteActuel'];  
+    }
+  }
+
   getCuveRef($key) {
     if ($key == "0")
       return "";
     else{
-      return _ .find(this.array, (obj) => { return obj.$key == $key; })['referenceC'];
+      return _ .find(this.array, (obj) => { return obj.$key == $key; })['referenceC'];  
     }
   }
 
@@ -106,7 +125,18 @@ export class CuveService {
           quantiteAjoute: qajc,
           quantiteActuel: (parseInt(qajc) + parseInt(qancien))
       });
-      //return _ .find(this.array, (obj) => { return obj.$key == $key; })['referenceC'];
+    }
+  }
+
+  updateQuantiteCuveVente(cuv, qv) {
+    if (cuv == "0")
+      return "";
+    else{
+      const qancien = _ .find(this.array, (obj) => { return obj.$key == cuv; })['quantiteActuel'];
+      this.cuveList.update(cuv,
+        {
+          quantiteActuel: (parseInt(qancien) - parseInt(qv))
+      });
     }
   }
   

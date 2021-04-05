@@ -8,6 +8,7 @@ import { VenteComponent } from '../vente/vente.component';
 import { NotificationService } from 'src/app/general/services/notification.service';
 import { DialogService } from 'src/app/general/services/dialog.service';
 import { CommonModule } from '@angular/common';
+import { PistoletService } from 'src/app/general/services/pistolet.service';
 
 @Component({
   selector: 'app-vente-list',
@@ -18,13 +19,14 @@ export class VenteListComponent implements OnInit {
 
   constructor(
     private service: VenteService,
+    private pistoletService: PistoletService,
     private dialog: MatDialog,
     private notificationService: NotificationService,
     private dialogService: DialogService,
   ) { }
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['priceU', 'Qte', 'remise', 'perte', 'actions'];
+  displayedColumns: string[] = ['dateVente', 'pistoletRef', 'pompes', 'indexIV', 'indexFV', 'indexAV', 'priceUV', 'remise', 'perte', 'montantV', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
@@ -33,8 +35,10 @@ export class VenteListComponent implements OnInit {
     this.service.getVentes().subscribe(
       list => {
         let array = list.map(item => {
+          let pistoletRef = this.pistoletService.getPistoletRef(item.payload.val()['referencePi']);
           return {
             $key: item.key,
+            pistoletRef,
             ...item.payload.val()
           };
         });

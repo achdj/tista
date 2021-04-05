@@ -14,7 +14,7 @@ import { PompeService } from '../../../general/services/pompe.service';
 export class PistoletComponent implements OnInit {
 
   indf = 0;
-  mtne = 0;
+  //mtne = 0;
 
   constructor(
     public service: PistoletService,
@@ -27,7 +27,7 @@ export class PistoletComponent implements OnInit {
   ngOnInit(): void {
     this.service.getPistolets();
     this.indf = this.indf;
-    this.mtne = this.mtne;
+    //this.mtne = this.mtne;
   }
 
   onClear(){
@@ -64,17 +64,17 @@ export class PistoletComponent implements OnInit {
 
   @ViewChild('indexinitial') indexinitial:ElementRef;
   @ViewChild('indexfinal') indexfinal:ElementRef;
-  @ViewChild('indexrestant') indexrestant:ElementRef;
-  @ViewChild('prixunitaire') prixunitaire:ElementRef;  
+  @ViewChild('indexactuel') indexactuel:ElementRef;
+  //@ViewChild('prixunitaire') prixunitaire:ElementRef;  
   onKey(){
     const ini = this.indexinitial.nativeElement.value;
     const inf = this.indexfinal.nativeElement.value; 
-    const inr = this.indexrestant.nativeElement.value;
-    const pu = this.prixunitaire.nativeElement.value;
-    const r = parseInt(ini) - parseInt(inf) ;
-    const mtn = r * pu;
+    //const inr = this.indexactuel.nativeElement.value;
+    //const pu = this.prixunitaire.nativeElement.value;
+    const r = parseInt(ini) + parseInt(inf) ;
+    //const mtn = r * pu;
     this.indf = r;
-    this.mtne = mtn;
+    //this.mtne = mtn;
   }
 
 }

@@ -28,7 +28,7 @@ export class PistoletListComponent implements OnInit {
     ) { }
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['referencePi', 'cuvRef', 'pompeRef', 'indexI', 'indexF', 'indexR', 'montantPi', 'montantPi', 'datePi','actions'];
+  displayedColumns: string[] = ['referencePi', 'cuvRef', 'pompeRef', 'indexI', 'indexF', 'indexN', 'datePi','actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;

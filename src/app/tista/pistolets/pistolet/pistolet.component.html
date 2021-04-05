@@ -12,11 +12,11 @@
             <div class="controles-container">  
                 <input type="hidden" formControlName="$key">
                 <mat-form-field appearance="legacy">
-                    <input type="text" matInput formControlName="referencePi" placeholder="Référence pompe*">
+                    <input type="text" matInput formControlName="referencePi" placeholder="Référence pistolet*">
                     <mat-error>Ce champ est obligatoire</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="legacy">
-                    <input type="number" matInput formControlName="indexI" #indexinitial (keyup)="onKey()" placeholder="Index initial*">
+                    <input type="number" matInput formControlName="indexI" #indexinitial readonly placeholder="Index initial*">
                     <mat-error>Ce champ est obligatoire</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="legacy">
@@ -24,13 +24,10 @@
                     <mat-error>Ce champ est obligatoire</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="legacy">
-                    <input type="number" matInput formControlName="indexR" #indexrestant [(ngModel)]="indf" readonly placeholder="Index restant*">
+                    <input type="number" matInput formControlName="indexN" #indexactuel [(ngModel)]="indf" readonly placeholder="Index actuel*">
                     <mat-error>Ce champ est obligatoire</mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="legacy">
-                    <input type="number" matInput formControlName="prixUPi" #prixunitaire (keyup)="onKey()" placeholder="Prix unitaire/Litre*">
-                    <mat-error>Ce champ est obligatoire</mat-error>
-                </mat-form-field>
+                
             </div>
         </mat-grid-tile>
         <mat-grid-tile>
@@ -57,8 +54,13 @@
                 </mat-form-field>
 
                 <mat-form-field appearance="legacy">
-                    <input type="number" matInput formControlName="montantPi" [(ngModel)]="mtne" readonly placeholder="Montant équivalent*">
+                    <input type="number" matInput formControlName="prixUPi" placeholder="Prix unitaire/Litre*">
+                    <mat-error>Ce champ est obligatoire</mat-error>
                 </mat-form-field>
+
+                <!--mat-form-field appearance="legacy">
+                    <input type="number" matInput formControlName="montantPi" [(ngModel)]="mtne" readonly placeholder="Montant équivalent*">
+                </mat-form-field-->
                 
                 <mat-form-field appearance="legacy">
                     <mat-label>Choose a date</mat-label>

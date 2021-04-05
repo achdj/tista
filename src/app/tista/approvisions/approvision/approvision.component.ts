@@ -4,6 +4,8 @@ import { ViewChild, ElementRef } from '@angular/core';
 import { ApprovisionService } from '../../../general/services/approvision.service';
 import { NotificationService } from '../../../general/services/notification.service';
 import { CuveService } from '../../../general/services/cuve.service';
+import { Input, ChangeDetectionStrategy } from '@angular/core';
+import { FormGroup, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-approvision',
@@ -11,6 +13,8 @@ import { CuveService } from '../../../general/services/cuve.service';
   styleUrls: ['./approvision.component.scss']
 })
 export class ApprovisionComponent implements OnInit {
+
+  @Input() errors: ValidationErrors;
 
   pr = 0;
   //cpt = 0;
@@ -37,26 +41,46 @@ export class ApprovisionComponent implements OnInit {
     if (this.service.form.valid) {
       
       if (!this.service.form.get('$key').value){
-        this.service.insertApprovision(this.service.form.value);
         const cu = this.service.form.get('cuves').value;
         const qajc = this.service.form.get('quantiteApp').value;
-        //console.log('idCuve', cu);
-        //console.log('quantiteApp', qac);
-        this.cuveService.updateQuantiteCuve(cu, qajc);
-        this.notificationService.success(':: Enregistrer avec succes');
-        this.onClose();
+        const a =this.cuveService.getCuveVolume(cu);
+        const b = this.cuveService.getCuveQuantiteActuel(cu);
+        const c = parseInt(b) + parseInt(qajc);
+        if(c <= a){
+          this.service.insertApprovision(this.service.form.value);
+          this.cuveService.updateQuantiteCuve(cu, qajc);
+          this.notificationService.success(':: Enregistrer avec succes');
+          this.onClose();
+        }
+        else{
+          const nameControl = this.service.form.get('quantiteApp');
+          nameControl.setErrors({
+            "notInferieur": true
+          });
+        }
       }
       else{
-        this.service.updateApprovision(this.service.form.value);
+        
         const cu = this.service.form.get('cuves').value;
         const qajc = this.service.form.get('quantiteApp').value;
-        //console.log('idCuve', cu);
-        //console.log('quantiteApp', qac);
-        this.cuveService.updateQuantiteCuve(cu, qajc);
-        this.service.form.reset();
-        this.service.initializeFormGroup();
-        this.notificationService.success(':: Modifier avec succes');
-        this.onClose();
+        const a =this.cuveService.getCuveVolume(cu);
+        const b = this.cuveService.getCuveQuantiteActuel(cu);
+        const c = parseInt(b) + parseInt(qajc);
+        if(c <= a){
+          this.service.updateApprovision(this.service.form.value);
+          this.cuveService.updateQuantiteCuve(cu, qajc);
+          this.service.form.reset();
+          this.service.initializeFormGroup();
+          this.notificationService.success(':: Modifier avec succes');
+          this.onClose();
+        }
+        else{
+          const nameControl = this.service.form.get('quantiteApp');
+          nameControl.setErrors({
+            "notInferieur": true
+          });
+        }
+        
       }
       
     }

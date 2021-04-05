@@ -35,10 +35,10 @@ export class PistoletService {
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
     referencePi: new FormControl('', Validators.required),
-    indexI: new FormControl('', Validators.required),
+    indexI: new FormControl(''),
     indexF: new FormControl('', Validators.required),
-    indexR: new FormControl(''),
-    montantPi: new FormControl('', Validators.required),
+    indexN: new FormControl('', Validators.required),
+    //montantPi: new FormControl('', Validators.required),
     prixUPi: new FormControl('', Validators.required),
     datePi: new FormControl('', Validators.required),
     cuves: new FormControl(0, Validators.required),
@@ -49,10 +49,10 @@ export class PistoletService {
     this.form.setValue({
       $key: null,
       referencePi: '',
-      indexI: '',
+      indexI: 0,
       indexF: '',
-      indexR: '',
-      montantPi: '',
+      indexN: '',
+      //montantPi: '',
       prixUPi: '',
       datePi: '',
       cuves: 0,
@@ -72,8 +72,8 @@ export class PistoletService {
       referencePi: pistolet.referencePi,
       indexI: pistolet.indexI,
       indexF: pistolet.indexF,
-      indexR: pistolet.indexR,
-      montantPi: pistolet.montantPi,
+      indexN: pistolet.indexN,
+      //montantPi: pistolet.montantPi,
       prixUPi: pistolet.prixUPi,
       datePi: pistolet.datePi == "" ? "" : this.datePipe.transform(pistolet.datePi, 'yyyy-MM-dd'),
       cuves: pistolet.cuves,
@@ -87,8 +87,8 @@ export class PistoletService {
         referencePi: pistolet.referencePi,
         indexI: pistolet.indexI,
         indexF: pistolet.indexF,
-        indexR: pistolet.indexR,
-        montantPi: pistolet.montantPi,
+        indexN: pistolet.indexN,
+        //montantPi: pistolet.montantPi,
         prixUPi: pistolet.prixUPi,
         datePi: pistolet.datePi == "" ? "" : this.datePipe.transform(pistolet.datePi, 'yyyy-MM-dd'),
         cuves: pistolet.cuves,
@@ -102,7 +102,8 @@ export class PistoletService {
 
   populateForm(pistolet){
     //si on recupère avec une info d'autre service
-    this.form.setValue(_.omit(pistolet, 'cuvRef', 'pompeRef'));
+    //this.form.setValue(_.omit(pistolet, 'cuvRef', 'pompeRef'));
+    this.form.setValue(_.omit(pistolet, 'pompeRef'));
   }
 
   getPistoletRef($key) {
@@ -110,6 +111,41 @@ export class PistoletService {
       return "";
     else{
       return _ .find(this.array, (obj) => { return obj.$key == $key; })['referencePi'];
+    }
+  }
+
+  getPistoletCuveRef($key) {
+    if ($key == "0")
+      return "";
+    else{
+      return _ .find(this.array, (obj) => { return obj.$key == $key; })['cuves'];
+    }
+  }
+
+  getPompeId($key) {
+    if ($key == "0")
+      return "";
+    else{
+      return _ .find(this.array, (obj) => { return obj.$key == $key; })['pompes'];
+    }
+  }
+
+  getPistIActuel($key) {
+    if ($key == "0")
+      return "";
+    else{
+      return _ .find(this.array, (obj) => { return obj.$key == $key; })['indexN'];
+    }
+  }
+
+  updateIndexPistoletActuel(pisto, qnp) {
+    if (pisto == "0")
+      return "";
+    else{
+      this.pistoletList.update(pisto,
+        {
+          indexN: qnp
+      });
     }
   }
   

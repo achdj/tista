@@ -31,17 +31,29 @@ export class VenteService {
 
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
-    priceU: new FormControl('', Validators.required),
-    Qte: new FormControl('', Validators.required),
-    remise: new FormControl('', Validators.required),
-    perte: new FormControl('',Validators.required)
+    dateVente: new FormControl('', Validators.required),
+    pistolets: new FormControl(0, Validators.required),
+    pompes: new FormControl(0, Validators.required),
+    indexIV: new FormControl('', Validators.required),
+    indexFV: new FormControl('', Validators.required),
+    indexAV: new FormControl('', Validators.required),
+    priceUV: new FormControl('', Validators.required),
+    montantV: new FormControl('', Validators.required),
+    remise: new FormControl(''),
+    perte: new FormControl('')
   });
   
   initializeFormGroup() {
     this.form.setValue({
       $key: null,
-      priceU: '',
-      Qte: '',
+      dateVente: '',
+      pistolets: 0,
+      pompes: '',
+      indexIV: '',
+      indexFV: '',
+      indexAV: '',
+      priceUV: '',
+      montantV: '',
       remise: '',
       perte: ''
     });
@@ -56,20 +68,32 @@ export class VenteService {
   
   insertVente(vente) {
     this.venteList.push({
-      priceU: vente.priceU,
-      Qte: vente.Qte,
+      dateVente: vente.dateVente == "" ? "" : this.datePipe.transform(vente.dateVente, 'yyyy-MM-dd'),
+      pistolets: vente.pistolets,
+      pompes: vente.pompes,
+      indexIV: vente.indexIV,
+      indexFV: vente.indexFV,
+      indexAV: vente.indexAV,
+      priceUV: vente.priceUV,
+      montantV: vente.montantV,
       remise: vente.remise,
-      perte: vente.perte 
+      perte: vente.perte
     });
   }
 
   updateVente(vente) {
     this.venteList.update(vente.$key,
       {
-        priceU: vente.priceU,
-        Qte: vente.Qte,
+        dateVente: vente.dateVente == "" ? "" : this.datePipe.transform(vente.dateVente, 'yyyy-MM-dd'),
+        pistolets: vente.pistolets,
+        pompes: vente.pompes,
+        indexIV: vente.indexIV,
+        indexFV: vente.indexFV,
+        indexAV: vente.indexAV,
+        priceUV: vente.priceUV,
+        montantV: vente.montantV,
         remise: vente.remise,
-        perte: vente.perte 
+        perte: vente.perte
       });
   }
 
@@ -79,7 +103,7 @@ export class VenteService {
 
   populateForm(vente){
     //this.form.setValue(_.omit(compagnie, 'busNom')); si on recupère avec une info d'autre service
-    this.form.setValue(_.omit(vente, ''));
+    this.form.setValue(_.omit(vente, 'pistoletRef'));
   }
 
   getVentepriceU($key) {

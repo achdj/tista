@@ -19,6 +19,7 @@
                 <mat-form-field appearance="legacy">
                     <input type="number" matInput formControlName="quantiteApp" placeholder="Quantité à approvisionné* en m³">
                     <mat-error>Ce champ est obligatoire</mat-error>
+                    <mat-error *ngIf="errors && errors['notInferieur']">Quantité à ajouté supérieur au volume de la cuve</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="legacy">
                     <input type="number" matInput formControlName="coutTr" #fondovalor (keyup)="onKey()" placeholder="coût du transport/Litre">
